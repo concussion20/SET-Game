@@ -1,0 +1,28 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 200px;
+  border: 2px solid lightgray;
+  margin: 15px;
+}
+
+.card:hover {
+  background-color: rgb(189, 245, 189);
+}
+
+.card img {
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+}
+
+.selected {
+  background-color: lightgreen;
+}
+
+.finded {
+  background-color: lightpink;
+}
