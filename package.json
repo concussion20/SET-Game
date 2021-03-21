@@ -5,21 +5,22 @@
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@reduxjs/toolkit": "^1.5.0",
+    "@tailwindcss/postcss7-compat": "^2.0.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "autoprefixer": "^9.8.6",
+    "express-favicon": "^2.0.1",
+    "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "@tailwindcss/postcss7-compat": "^2.0.4",
-    "autoprefixer": "^9.8.6",
-    "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4"
   },
   "scripts": {
-    "start": "craco --max_old_space_size=460 start",
+    "start": "node --max_old_space_size=460 server.js",
     "build": "craco --max_old_space_size=460 build",
     "test": "craco test",
     "eject": "react-scripts eject"
