@@ -3,8 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 140px;
-  height: 200px;
+  /* width: 140px; */
+  /* height: 200px; */
+  width: 55%;
+  height: 210px;
   border: 2px solid lightgray;
   margin: 15px;
 }
@@ -14,8 +16,9 @@
 }
 
 .card img {
-  width: 100px;
-  height: 40px;
+  /* width: 100px; */
+  width: 60%;
+  /* height: 40px; */
   margin: 10px;
 }
 
