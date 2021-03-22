@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import {connect} from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,6 +8,9 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
+import connectHoc from './Mappers';
+import Rule from './Rule';
+import Home from './Home';
 
 class App extends React.Component {
   constructor(props) {
@@ -97,145 +99,6 @@ class App extends React.Component {
   }
 }
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("home")
-    console.log(props)
-  }
-
-  render() {
-    console.log("Home render")
-    console.log(this.props)
-    return (
-      // <div className={`${this.props.location.pathname === '/' ? 'content' : ''}`}>
-      <div className={`content ${this.props.location.pathname === '/' ? 'col-span-6' : 'col-span-4'}`}>
-        {this.props.location.pathname === '/' && 
-          <div>
-            <h2>New SET Game</h2>
-            <div className='diffic-options'>
-              <ul>
-                <li>
-                  <Link to="/SET/easy" className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-                    Easy
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/SET/medium" className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-                    Medium
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/SET/hard" className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-                    Hard
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        }
-        
-        <Switch>
-          <Route path="/SET/easy">
-            <ConnectedGame difficulty='easy' />
-          </Route>
-          <Route path="/SET/medium">
-            <ConnectedGame difficulty='medium' />
-          </Route>
-          <Route path="/SET/hard">
-            <ConnectedGame difficulty='hard' />
-          </Route>
-        </Switch>
-      </div>
-    );
-  }
-}
-
-function Rule() {
-  return (
-    <div className='content col-start-2 col-span-4'>
-      <h2>Rules</h2>
-      <br />
-      <p>
-        The object of the game is to identify a 'Set' of three cards from 12 cards laid out on the table. Each card has a variation of the following four features:
-      </p>
-      <ol className='list-decimal'>
-        <li>
-          COLOR: Each card is red, green, or blue.
-        </li>
-        <li>
-          SYMBOL: Each card contains ovals, squiggles, or diamonds.
-        </li>
-        <li>
-          NUMBER: Each card has one, two, or three symbols.
-        </li>
-        <li>
-          SHADING: Each card is solid, open, or striped.
-        </li>
-      </ol>
-      <p>
-        A 'Set' consists of three cards in which each feature is EITHER the same on each card OR is different on each card. That is to say, any feature in the 'Set' of three cards is either common to all three cards or is different on each card.
-      </p>
-      <br />
-      <img src='/images/rules_examples.jpg' alt='' />
-    </div>
-  );
-}
-
-class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("game")
-    console.log(props)
-    // load game board
-    props.dispatch({type: "LOAD_GAME", difficulty: props.difficulty});
-  }
-
-  handleClick() {
-    if (this.props.isSelected === 'false') {
-      this.props.dispatch({type: "SELECT_CARD", id: this.props.id});
-    } else {
-      this.props.dispatch({type: "DESELECT_CARD", id: this.props.id});
-    }
-  }
-
-  render() {
-    console.log("Game render")
-    console.log(this.props)
-    let msgColor = this.props.store.isMatch === 'yes' ? 'green' : 'red';
-    let msg = this.props.store.isMatch === 'empty' ? '' : this.props.store.isMatch === 'no' ? "Cards don't match!" :
-      (this.props.store.leftCards.length === 0 && this.props.store.shownCards.length === 0) ? 'You win!!' : 'Cards match!';
-    return (
-      <div id='game'>
-        <div className='cards'>
-          {this.props.store.shownCards}
-        </div>
-        <div className={msgColor}>
-          {msg}
-        </div>
-      </div>
-    );
-  }
-}
-
-let mapDispatchToProps = function(dispatch, ownProps) {
-  return {
-      dispatch: dispatch
-  };
-}
-
-let mapStateToProps = function(state, ownProps) {
-  return {
-    store: state
-  };
-}
-
-const connectHoc = connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
-
 const ConnectedApp = connectHoc(App);
-const ConnectedGame = connectHoc(Game);
 
 export default ConnectedApp;

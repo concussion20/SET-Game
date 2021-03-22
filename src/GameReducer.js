@@ -75,12 +75,6 @@ function selectCard(id, difficulty, selected, shownCards, leftCards) {
     }
   }
 
-  // console.log(card)
-  // card = {
-  //   ...card
-  // };
-  // console.log(card)
-  // card.props.isSelected = 'true';
   let newSelected = selected.concat(card);
   let newShownCards;
   let newLeftCards;
@@ -108,7 +102,6 @@ function selectCard(id, difficulty, selected, shownCards, leftCards) {
   }
 
   if (newSelected.length === 3) {
-    // newSelected[0].props.isSelected = newSelected[1].props.isSelected = newSelected[2].props.isSelected = 'false';
     newSelected = [];
   }
 

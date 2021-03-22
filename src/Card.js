@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import './Card.css';
+import connectHoc from './Mappers';
 
 export const COLORS = ['blue', 'green', 'red'];
 export const NUMBERS = [1, 2, 3];
@@ -42,23 +42,6 @@ class Card extends React.Component {
     );
   }
 }
-
-let mapDispatchToProps = function(dispatch, ownProps) {
-  return {
-      dispatch: dispatch
-  };
-}
-
-let mapStateToProps = function(state, ownProps) {
-  return {
-    store: state
-  };
-}
-
-const connectHoc = connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
 
 const ConnectedCard = connectHoc(Card);
 
