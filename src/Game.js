@@ -4,8 +4,8 @@ import connectHoc from './Mappers';
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    console.log("game")
-    console.log(props)
+    // console.log("game")
+    // console.log(props)
     // load game board
     props.dispatch({type: "LOAD_GAME", difficulty: props.difficulty});
   }
@@ -19,8 +19,8 @@ class Game extends React.Component {
   }
   
   render() {
-    console.log("Game render")
-    console.log(this.props)
+    // console.log("Game render")
+    // console.log(this.props)
     let msgColor = this.props.store.isMatch === 'yes' ? 'green' : 'red';
     let msg = this.props.store.isMatch === 'empty' ? '' : this.props.store.isMatch === 'no' ? "Cards don't match!" :
       (this.props.store.leftCards.length === 0 && this.props.store.shownCards.length === 0) ? 'You win!!' : 'Cards match!';

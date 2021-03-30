@@ -15,8 +15,8 @@ import Home from './Home';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    console.log("App")
-    console.log(props)
+    // console.log("App")
+    // console.log(props)
   }
 
   newGame() {
@@ -32,8 +32,8 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("App render")
-    console.log(this.props)
+    // console.log("App render")
+    // console.log(this.props)
 
     return (
       <Router>

@@ -12,13 +12,13 @@ import ConnectedGame from './Game';
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
-    console.log("home")
-    console.log(props)
+    // console.log("home")
+    // console.log(props)
   }
   
   render() {
-    console.log("Home render")
-    console.log(this.props)
+    // console.log("Home render")
+    // console.log(this.props)
     return (
       // <div className={`${this.props.location.pathname === '/' ? 'content' : ''}`}>
       <div className={`content ${this.props.location.pathname === '/' ? 'col-span-6' : 'col-span-4'}`}>
